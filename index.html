@@ -14,6 +14,7 @@
       backdrop-filter: blur(28px);
       border: 1px solid rgba(163, 230, 77, 0.35);
       box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
+      transition: all 0.5s ease;
     }
     .lime-gradient { background: linear-gradient(90deg, #a3e72d, #bef575, #a3e72d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   </style>
@@ -26,6 +27,12 @@
       <div class="flex items-center gap-3 text-2xl font-bold">
         <span class="text-lime-400">✦</span> BuildFree.ai
       </div>
+      <div class="flex items-center gap-8 text-sm">
+        <a href="#home" class="hover:text-lime-400">Home</a>
+        <a href="#build" class="hover:text-lime-400">Build Store</a>
+        <a href="#videos" class="hover:text-lime-400">AI Videos</a>
+        <a href="#pricing" class="hover:text-lime-400">Pricing</a>
+      </div>
     </div>
   </nav>
 
@@ -36,55 +43,150 @@
         Build Your Store.<br>
         <span class="lime-gradient">Free. Powerful. Simple.</span>
       </h1>
-      <button onclick="alert('Starting store builder... (Demo)')" 
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">The smartest free AI store builder with realistic product videos</p>
+      <button onclick="document.getElementById('build').scrollIntoView({ behavior: 'smooth' })" 
         class="px-12 py-6 text-2xl font-semibold rounded-3xl bg-gradient-to-r from-lime-400 to-green-400 text-black hover:scale-105 transition-all">
         Start Building Free →
       </button>
     </div>
   </section>
 
-  <!-- Build Store -->
+  <!-- BUILD STORE -->
   <section id="build" class="py-24 bg-zinc-950">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-5xl font-bold mb-8">Build Your Store in 60 Seconds</h2>
-      <button onclick="alert('AI is building your custom store with 10 winning products...')" 
-        class="px-16 py-6 bg-gradient-to-r from-lime-400 to-green-400 text-black rounded-3xl text-xl font-bold">
-        Build My Custom Store Now
-      </button>
+      <div class="glass-3d rounded-3xl p-10">
+        <button onclick="buildCustomStore()" 
+          class="px-16 py-6 bg-gradient-to-r from-lime-400 to-green-400 text-black rounded-3xl text-xl font-bold hover:scale-105 transition-all">
+          Build My Custom Store Now
+        </button>
+      </div>
     </div>
   </section>
 
-  <!-- AI Videos -->
+  <!-- AI VIDEOS -->
   <section id="videos" class="py-24 bg-black">
     <div class="max-w-5xl mx-auto px-6 text-center">
       <h2 class="text-5xl font-bold mb-4 lime-gradient">Realistic AI Video Generator</h2>
-      <p class="text-gray-400">Upload your product photos to generate realistic videos</p>
+      <p class="text-gray-400">Upload product photos → Generate realistic videos of people using & reviewing your products</p>
     </div>
   </section>
 
-  <!-- Pricing -->
+  <!-- PRICING -->
   <section id="pricing" class="py-24 bg-zinc-950">
     <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-5xl font-bold text-center mb-16">Simple Pricing</h2>
-      <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+      <h2 class="text-5xl font-bold text-center mb-16">Choose Your Plan</h2>
+      <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+
+        <!-- FREE PLAN -->
         <div class="glass-3d rounded-3xl p-10">
-          <h3 class="text-3xl font-bold">Free</h3>
-          <p class="text-6xl font-bold my-6">R0</p>
-          <ul class="space-y-4">
-            <li>✓ 50 Products</li>
-            <li>✓ 10 AI Videos / Day</li>
+          <h3 class="text-3xl font-bold mb-2">Free</h3>
+          <p class="text-6xl font-bold my-6">R0<span class="text-base">/forever</span></p>
+          <ul class="space-y-4 text-lg mb-8">
+            <li>✓ Up to 50 Products</li>
+            <li>✓ 10 AI Videos per day</li>
+            <li>✓ Import from CJ Dropshipping, AliExpress & Tradelle</li>
+            <li>✓ Basic AI product descriptions</li>
+            <li>✓ Standard video quality</li>
+            <li>✓ Community support</li>
           </ul>
+          <button onclick="document.getElementById('build').scrollIntoView({ behavior: 'smooth' })" 
+            class="w-full py-5 border border-lime-400 text-lime-400 rounded-2xl font-bold">
+            Start Free Now
+          </button>
         </div>
-        <div class="glass-3d rounded-3xl p-10 border-2 border-lime-400">
-          <h3 class="text-3xl font-bold">Pro</h3>
+
+        <!-- PRO PLAN -->
+        <div class="glass-3d rounded-3xl p-10 border-2 border-lime-400 relative">
+          <div class="absolute -top-4 right-6 bg-lime-400 text-black text-sm px-6 py-1 rounded-full font-bold">MOST POPULAR</div>
+          <h3 class="text-3xl font-bold mb-2">Pro</h3>
           <p class="text-6xl font-bold my-6">R499<span class="text-base">/month</span></p>
-          <button onclick="alert('Redirecting to Paystack secure checkout...')" 
-            class="w-full py-5 bg-lime-400 text-black rounded-2xl font-bold">
+          <ul class="space-y-4 text-lg mb-8">
+            <li>✓ Unlimited Products</li>
+            <li>✓ Unlimited AI Videos (HD)</li>
+            <li>✓ Done-For-You Custom Store Builder</li>
+            <li>✓ No watermark videos + realistic reactions</li>
+            <li>✓ Priority AI Assistant Bot</li>
+            <li>✓ Priority Support</li>
+            <li>✓ Advanced analytics</li>
+          </ul>
+          <button onclick="startPaystackCheckout()" 
+            class="w-full py-5 bg-lime-400 text-black rounded-2xl font-bold text-lg hover:bg-lime-300">
             Upgrade to Pro — R499/month
           </button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- DETAILED FOOTER -->
+  <footer class="bg-black border-t border-zinc-800 py-16">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10">
+      <div>
+        <h4 class="font-bold text-2xl mb-4 text-lime-400">BuildFree.ai</h4>
+        <p class="text-gray-400">Free AI-powered dropshipping store builder for South Africa and the world.</p>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4">Product</h4>
+        <p class="text-sm text-gray-400 space-y-2">
+          <a href="#build" class="block hover:text-white">Build Store</a>
+          <a href="#videos" class="block hover:text-white">AI Videos</a>
+          <a href="#" class="block hover:text-white">Import Products</a>
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4">Legal</h4>
+        <p onclick="alert('Terms & Conditions\n\nThis is a demo website. Full legal terms will be added in production.')" 
+          class="text-sm text-gray-400 hover:text-white cursor-pointer mb-2">Terms & Conditions</p>
+        <p onclick="alert('Privacy Policy\n\nWe respect your data. Full privacy policy coming soon.')" 
+          class="text-sm text-gray-400 hover:text-white cursor-pointer">Privacy Policy</p>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4">Support</h4>
+        <button onclick="alert('Chat with Developer\n\nThis would open a real chat in the full version.')" 
+          class="text-lime-400 hover:text-lime-300 mb-4">💬 Contact Developer</button>
+      </div>
+    </div>
+
+    <!-- Secure Payments -->
+    <div class="text-center mt-12 border-t border-zinc-800 pt-8">
+      <p class="text-gray-400 mb-4">🔒 Secure Payments Powered by Paystack</p>
+      <div class="flex justify-center gap-8 text-4xl text-gray-400">
+        <i class="fa-solid fa-shield-halved"></i>
+        <i class="fa-solid fa-lock"></i>
+        <i class="fa-solid fa-credit-card"></i>
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+    </div>
+
+    <!-- Support Developer -->
+    <div class="text-center mt-12">
+      <p class="text-gray-400 mb-4">If you enjoy this free tool, you can support the developer who built it</p>
+      <button onclick="alert('Thank you so much for your support! 💚\n\n(This is a demo. Real payment link will be added later)')" 
+        class="px-10 py-4 bg-gradient-to-r from-lime-400 to-green-400 text-black rounded-3xl font-bold hover:scale-105 transition-all">
+        ☕ Buy Developer a Coffee
+      </button>
+    </div>
+
+    <div class="text-center text-xs text-gray-500 mt-12">
+      © 2026 BuildFree.ai • Made with ❤️ in South Africa
+    </div>
+  </footer>
+
+  <script>
+    function buildCustomStore() {
+      alert("🚀 AI is now building your custom store...\n\nWe'll select 10 winning products from CJ, AliExpress & Tradelle based on your niche.");
+    }
+
+    function startPaystackCheckout() {
+      const email = prompt("Enter your email address for receipt:", "you@example.com");
+      if (email) {
+        alert(`✅ Redirecting to Paystack secure checkout...\n\nEmail: ${email}\nAmount: R499/month`);
+      }
+    }
+  </script>
 </body>
 </html>
