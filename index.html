@@ -43,6 +43,7 @@
         Build Your Store.<br>
         <span class="lime-gradient">Free. Powerful. Simple.</span>
       </h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">The smartest free AI store builder with realistic videos</p>
       <button onclick="document.getElementById('build').scrollIntoView({ behavior: 'smooth' })" 
         class="px-12 py-6 text-2xl font-semibold rounded-3xl bg-gradient-to-r from-lime-400 to-green-400 text-black hover:scale-105 transition-all">
         Start Building Free →
@@ -50,12 +51,12 @@
     </div>
   </section>
 
-  <!-- Build Store -->
+  <!-- BUILD STORE -->
   <section id="build" class="py-24 bg-zinc-950">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-5xl font-bold mb-8">Build Your Store in 60 Seconds</h2>
       <div class="glass-3d rounded-3xl p-10">
-        <button onclick="alert('AI is building your custom store with 10 winning products... (Demo)')" 
+        <button onclick="alert('AI is building your custom store with 10 winning products...')" 
           class="px-16 py-6 bg-gradient-to-r from-lime-400 to-green-400 text-black rounded-3xl text-xl font-bold">
           Build My Custom Store Now
         </button>
@@ -68,7 +69,7 @@
     <div class="max-w-5xl mx-auto px-6">
       <h2 class="text-5xl font-bold text-center mb-4 lime-gradient">Realistic AI Video Generator</h2>
       <div class="glass-3d rounded-3xl p-10 text-center">
-        <p class="text-gray-400">Upload your product photos to generate realistic videos</p>
+        <p class="text-gray-400">Upload your product photos to generate realistic videos of people using them</p>
       </div>
     </div>
   </section>
@@ -78,23 +79,89 @@
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-5xl font-bold text-center mb-16">Simple Pricing</h2>
       <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+
+        <!-- Free -->
         <div class="glass-3d rounded-3xl p-10">
           <h3 class="text-3xl font-bold">Free</h3>
           <p class="text-6xl font-bold my-6">R0</p>
-          <ul class="space-y-4">
-            <li>✓ 50 Products</li>
-            <li>✓ 10 AI Videos / Day</li>
+          <ul class="space-y-4 text-lg">
+            <li>✓ Up to 50 products</li>
+            <li>✓ 10 AI Videos per day</li>
+            <li>✓ Import from CJ, AliExpress & Tradelle</li>
+            <li>✓ Basic AI copywriting</li>
+            <li>✓ Community support</li>
           </ul>
         </div>
+
+        <!-- Pro -->
         <div class="glass-3d rounded-3xl p-10 border-2 border-lime-400">
           <h3 class="text-3xl font-bold">Pro</h3>
           <p class="text-6xl font-bold my-6">R499<span class="text-base">/month</span></p>
-          <button onclick="alert('Redirecting to Paystack... (Demo)')" class="w-full py-5 bg-lime-400 text-black rounded-2xl font-bold">
-            Upgrade to Pro
+          <ul class="space-y-4 text-lg">
+            <li>✓ Unlimited Products</li>
+            <li>✓ Unlimited AI Videos</li>
+            <li>✓ Done-For-You Custom Store Builder</li>
+            <li>✓ HD Videos + No Watermark</li>
+            <li>✓ Priority Support</li>
+            <li>✓ AI Assistant Bot</li>
+          </ul>
+          <button onclick="alert('Redirecting to Paystack secure checkout... (Demo)')" 
+            class="w-full py-5 bg-lime-400 text-black rounded-2xl font-bold text-lg">
+            Upgrade to Pro — R499/month
           </button>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Footer -->
+  <footer class="bg-black py-16 border-t border-zinc-800">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8">
+      <div>
+        <h4 class="font-bold mb-4 text-lime-400">BuildFree.ai</h4>
+        <p class="text-sm text-gray-400">Free AI Store Builder for everyone</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Product</h4>
+        <p class="text-sm text-gray-400">Build Store • AI Videos • Import Products</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Legal</h4>
+        <p onclick="alert('Terms & Conditions - This is a demo website.')" class="text-sm text-gray-400 hover:text-white cursor-pointer">Terms & Conditions</p>
+        <p onclick="alert('Privacy Policy - This is a demo website.')" class="text-sm text-gray-400 hover:text-white cursor-pointer">Privacy Policy</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Support</h4>
+        <button onclick="alert('Chat with Developer - This is a demo. In real version this would open a chat.')" 
+          class="text-lime-400 hover:text-lime-300">💬 Contact Developer</button>
+      </div>
+    </div>
+
+    <!-- Secure Payment & Appreciation -->
+    <div class="mt-16 text-center border-t border-zinc-800 pt-8">
+      <p class="text-gray-400 mb-4">Secure payments powered by Paystack</p>
+      <div class="flex justify-center gap-6 text-2xl text-gray-400">
+        <i class="fa-solid fa-shield-halved"></i>
+        <i class="fa-solid fa-lock"></i>
+        <i class="fa-solid fa-credit-card"></i>
+      </div>
+      <p class="text-sm text-gray-500 mt-8">If you enjoy this project, you can support the developer</p>
+      <button onclick="alert('Thank you so much for your support! 💚 (Demo)')" 
+        class="mt-4 px-8 py-3 bg-gradient-to-r from-lime-400 to-green-400 text-black rounded-2xl font-semibold">
+        Support the Developer ☕
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    // Simple scroll fade-in
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.glass-3d').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+          el.style.opacity = 1;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
