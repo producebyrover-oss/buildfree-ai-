@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuildFree.ai — Free AI Store Builder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    body { 
+      font-family: 'Inter', system-ui, sans-serif; 
+      scroll-behavior: smooth; 
+      background: #050505; 
+    }
+    .hero-bg { 
+      background: linear-gradient(135deg, #0a0a0a 0%, #052e16 50%, #0a0a0a 100%); 
+    }
+    .glass-3d {
+      background: linear-gradient(145deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      backdrop-filter: blur(28px);
+      border: 1px solid rgba(163, 230, 77, 0.35);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
+      transition: all 0.5s ease;
+    }
+    .glass-3d:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+    .lime-gradient { 
+      background: linear-gradient(90deg, #a3e72d, #bef575, #a3e72d); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+    .fade-in { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-black text-white">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 glass-3d">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3 text-2xl font-bold">
+        <span class="text-lime-400">✦</span> BuildFree.ai
+      </div>
+      <div class="flex items-center gap-8 text-sm">
+        <a href="#home" class="hover:text-lime-400">Home</a>
+        <a href="#build" class="hover:text-lime-400">Build Store</a>
+        <a href="#videos" class="hover:text-lime-400">AI Videos</a>
+        <a href="#pricing" class="hover:text-lime-400">Pricing</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home" class="hero-bg min-h-screen flex items-center pt-20 fade-in">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h1 class="text-6xl md:text-7xl font-bold leading-tight mb-6">
+        Build Your Store.<br>
+        <span class="lime-gradient">Free. Powerful. Simple.</span>
+      </h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">AI Store Builder with Realistic Product Videos</p>
+      <button onclick="document.getElementById('build').scrollIntoView({ behavior: 'smooth' })" 
+        class="px-12 py-6 text-2xl font-semibold rounded-3xl bg-gradient-to-r from-lime-400 to-green-400 text-black hover:scale-105 transition-all glass-3d">
+        Start Building Free →
+      </button>
+    </div>
+  </section>
+
+  <!-- BUILD STORE -->
+  <section id="build" class="py-24 bg-zinc-950 fade-in">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-5xl font-bold mb-8">Build Your Store in 60 Seconds</h2>
+      <div class="glass-3d rounded-3xl p-10">
+        <p class="text-gray-400 mb-8">Choose your niche and let AI create your store with 10 winning products</p>
+        <button onclick="alert('AI is building your custom store... (Demo)')" 
+          class="px-16 py-6 bg-gradient-to-r from-lime-400 to-green-400 text-black rounded-3xl text-xl font-bold">
+          Build My Custom Store
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Videos -->
+  <section id="videos" class="py-24 bg-black fade-in">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-4 lime-gradient">Realistic AI Video Generator</h2>
+      <div class="glass-3d rounded-3xl p-10 text-center">
+        <p class="text-gray-400">Upload product photos to generate realistic videos of people using them</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="py-24 bg-zinc-950 fade-in">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-16">Simple Pricing</h2>
+      <div class="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+        <div class="glass-3d rounded-3xl p-10">
+          <h3 class="text-3xl font-bold">Free</h3>
+          <p class="text-6xl font-bold my-6">R0</p>
+          <ul class="space-y-4">
+            <li>✓ 50 Products</li>
+            <li>✓ 10 AI Videos / Day</li>
+          </ul>
+        </div>
+        <div class="glass-3d rounded-3xl p-10 border-2 border-lime-400">
+          <h3 class="text-3xl font-bold">Pro</h3>
+          <p class="text-6xl font-bold my-6">R499<span class="text-base">/month</span></p>
+          <button onclick="alert('Redirecting to Paystack checkout... (Demo)')" 
+            class="w-full py-5 bg-lime-400 text-black rounded-2xl font-bold">
+            Upgrade to Pro
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scroll fade-in
+    function handleScroll() {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.8) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', handleScroll);
+    window.onload = handleScroll;
+  </script>
+</body>
+</html>
