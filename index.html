@@ -6,6 +6,8 @@
   <title>BuildFree.ai — Free AI Store Builder</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <!-- Paystack Script -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; scroll-behavior: smooth; background: #050505; }
     .hero-bg { background: linear-gradient(135deg, #0a0a0a 0%, #052e16 50%, #0a0a0a 100%); }
@@ -110,7 +112,7 @@
             <li>✓ Priority Support</li>
             <li>✓ Advanced analytics</li>
           </ul>
-          <button onclick="startPaystackCheckout()" 
+          <button onclick="startPaystackCheckout()" id="paymentBtn"
             class="w-full py-5 bg-lime-400 text-black rounded-2xl font-bold text-lg hover:bg-lime-300">
             Upgrade to Pro — R499/month
           </button>
@@ -177,15 +179,45 @@
   </footer>
 
   <script>
+    // ⚠️ IMPORTANT: Replace with your actual Paystack Public Key
+    const PAYSTACK_PUBLIC_KEY = "pk_live_YOUR_PUBLIC_KEY_HERE"; // Get this from your Paystack dashboard
+    
     function buildCustomStore() {
       alert("🚀 AI is now building your custom store...\n\nWe'll select 10 winning products from CJ, AliExpress & Tradelle based on your niche.");
     }
 
     function startPaystackCheckout() {
+      // Get customer email
       const email = prompt("Enter your email address for receipt:", "you@example.com");
-      if (email) {
-        alert(`✅ Redirecting to Paystack secure checkout...\n\nEmail: ${email}\nAmount: R499/month`);
+      
+      if (!email || !email.includes("@")) {
+        alert("Please enter a valid email address");
+        return;
       }
+
+      // Validate Paystack Key is set
+      if (PAYSTACK_PUBLIC_KEY.includes("YOUR_PUBLIC_KEY")) {
+        alert("⚠️ Paystack Public Key not configured!\n\nPlease:\n1. Go to your Paystack Dashboard\n2. Get your Public Key from Settings\n3. Replace 'pk_live_YOUR_PUBLIC_KEY_HERE' in the code");
+        return;
+      }
+
+      // Initialize Paystack Checkout
+      const handler = PaystackPop.setup({
+        key: PAYSTACK_PUBLIC_KEY,
+        email: email,
+        amount: 49900, // R499 in kobo (cents)
+        currency: "ZAR",
+        ref: 'BUILDFREE_' + Math.floor((Math.random() * 1000000000) + 1),
+        onClose: function() {
+          alert('❌ Payment window closed.');
+        },
+        onSuccess: function(response) {
+          alert('✅ Payment successful!\n\nReference: ' + response.reference + '\n\nWelcome to BuildFree.ai Pro! 🎉');
+          // Here you would typically send the reference to your backend to verify payment
+          // and activate the Pro plan for this user
+        }
+      });
+      handler.openIframe();
     }
   </script>
 </body>
